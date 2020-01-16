@@ -1,9 +1,8 @@
 {
-  "name": "moat-display-loader",
-  "version": "1.0.0",
-  "description": "Moat tag for tracking display Advertisements",
-  "main": "index.js",
-  "author": "MOAT",
-  "license": "Copyright (c) 2011, 2019, Oracle and/or its affiliates.  All rights reserved.",
-  "types": "module.d.ts"
+    "name": "@giphy/moat-loader",
+    "version": "1.0.0",
+    "description": "Moat tag for tracking display Advertisements",
+    "main": "index.js",
+    "author": "MOAT",
+    "types": "module.d.ts"
 }
