@@ -1,27 +1,31 @@
 /*Copyright (c) 2011, 2020, Oracle and/or its affiliates.  All rights reserved.*/
-function f() {}
-f.prototype.a = function(g, d) {
+function moatLoader() {}
+moatLoader.prototype.a = function(partnerCode, url) {
   var h = this;
-  return new Promise(function(k, b) {
+  return new Promise(function(resolve, reject) {
     "undefined" === typeof document &&
-      b("moat_npm_module: Moat tag doesn't support current environment");
-    g || b("moat_npm_module: partnercode is required");
-    var c = document.createElement("script"),
-      e = document.querySelector("head");
-    (c && e) || b("moat_npm_module: Moat tag can't be loaded");
-    var a = Math.round(Date.now() / 1e3),
-      l = a << 1;
-    a =
+      reject("moat_npm_module: Moat tag doesn't support current environment");
+    partnerCode || reject("moat_npm_module: partnercode is required");
+    var scriptTag = document.createElement("script"),
+      headTag = document.querySelector("head");
+    (scriptTag && headTag) ||
+      reject("moat_npm_module: Moat tag can't be loaded");
+    var randomId = Math.round(Date.now() / 1e3),
+      l = randomId << 1;
+    randomId =
       String.fromCharCode(77, 79, 65, 84) +
-      window[String.fromCharCode(98, 116, 111, 97)](a);
-    window[a] = h;
-    window[a].resolve = k;
-    window[a].reject = b;
-    window[a].adFindingMethod = "moat-display-dynamic";
-    window[a].moatTagHostedFullUrl = d;
-    c.type = "text/javascript";
-    e.insertBefore(c, e.childNodes[0] || null);
-    c.src = (d ? d : "https://z.moatads.com/" + g + "/moatad.js") + "#" + l;
+      window[String.fromCharCode(98, 116, 111, 97)](randomId);
+    window[randomId] = h;
+    window[randomId].resolve = resolve;
+    window[randomId].reject = reject;
+    window[randomId].adFindingMethod = "moat-display-dynamic";
+    window[randomId].moatTagHostedFullUrl = url;
+    scriptTag.type = "text/javascript";
+    headTag.insertBefore(scriptTag, headTag.childNodes[0] || null);
+    scriptTag.src =
+      (url ? url : "https://z.moatads.com/" + partnerCode + "/moatad.js") +
+      "#" +
+      l;
   });
 };
-module.exports = { loadMoatTag: new f().a };
+module.exports = { loadMoatTag: new moatLoader().a };

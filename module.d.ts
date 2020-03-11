@@ -1,6 +1,12 @@
-declare module '@giphy/moat-loader' {
-    export function loadMoatTag(partnerCode: string): Promise<any>;
-    export function startTracking(adElement: HTMLElement, adIdentifiers: object): number;
-    export function stopTracking(adNum: number);
-    export function stopTrackingAllAds();
+declare module "@giphy/moat-loader" {
+  export function loadMoatTag(
+    partnerCode: string,
+    moatTagHostedFullUrl: string
+  ): Promise<any>;
+  export function startTracking(
+    adElement: HTMLElement,
+    adIdentifiers: object
+  ): number;
+  export function stopTracking(adNum: number);
+  export function stopTrackingAllAds();
 }
