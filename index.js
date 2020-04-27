@@ -23,7 +23,7 @@ moatLoader.prototype.a = function(partnerCode, url) {
     scriptTag.type = "text/javascript";
     headTag.insertBefore(scriptTag, headTag.childNodes[0] || null);
     scriptTag.src =
-      (url ? url : "https://z.moatads.com/" + partnerCode + "/moatad.js") +
+      (url ? url : "https://z.moatads.com/" + partnerCode + "/moatad2.js") +
       "#" +
       l;
   });
